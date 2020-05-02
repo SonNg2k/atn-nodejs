@@ -13,6 +13,7 @@ app.engine(".hbs", exphbs({
     extname: ".hbs",
     defaultLayout: "layout",
     layoutsDir: __dirname + "/views/layouts",
+    partialsDir: __dirname + '/views/partials/',
     helpers: helpers
 }));
 app.set("view engine", ".hbs");
