@@ -5,3 +5,15 @@
 html {
 	scroll-behavior: smooth;
 }
+
+#successAlert, #failureAlert {
+    display: none;
+}
+
+.fixed-top-center {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 1100;
+}
