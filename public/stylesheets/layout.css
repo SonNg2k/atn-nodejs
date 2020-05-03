@@ -17,3 +17,9 @@ html {
     transform: translate(-50%, 0);
     z-index: 1100;
 }
+
+.centered {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
