@@ -20,7 +20,7 @@ tinymce.init({
     image_advtab: true,
     paste_data_images: true,
     /* This is the URL where images are uploaded when editor.uploadImages is invoked */
-    images_upload_url: "/image",
+    images_upload_url: "/upload_img",
     /* images_upload_handler only sets the img'src attribute, it does not send any request to the server */
 
     /* enable automatic uploads of images represented by blob or data URIs*/
