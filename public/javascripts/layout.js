@@ -5,6 +5,8 @@ $(document).ready(() => {
 
         $("#addSubmit").show();
         $("#editSubmit").hide();
+
+        clearInps()
     })
 
     $("tbody").on("click", ".edit-btn", function () {
