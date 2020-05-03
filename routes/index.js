@@ -1,7 +1,12 @@
-var router = require("express").Router()
+var router = require("express").Router(),
+    uploadImg = require("./utils/upload-img")
 
 router.get("/", (_req, res) => {
     res.render("homepage")
+})
+
+router.post("/upload_img", uploadImg.any(), (req, res) => {
+    res.json({ location: `/images/uploaded/${req.files[0].filename}` })
 })
 
 // Assemble other routes...
