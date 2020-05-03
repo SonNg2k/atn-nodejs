@@ -15,3 +15,13 @@ $(document).ready(() => {
         else $(this).val(formattedPrice)
     })
 })
+
+function clearInps() {
+    $("#imgPreview").attr("src", "/images/200x200.png");
+    $("#thumbnailInp").val("")
+    $("#thumbnailLabel").text("Click here to select image...");
+    $("#nameInp").val("")
+    $("#priceInp").val(0)
+    $('#categorySelect option:eq(0)').prop('selected', true)
+    tinyMCE.activeEditor.setContent("");
+}
