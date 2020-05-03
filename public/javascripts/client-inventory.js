@@ -2,7 +2,7 @@ $(document).ready(() => {
     $("#thumbnailInp").change(function () {
         var thumbnail = $(this).prop('files')[0]
         $("#imgPreview").attr("src", URL.createObjectURL(thumbnail))
-        $("#imgPreview").on("load", function() {
+        $("#imgPreview").on("load", function () {
             URL.revokeObjectURL($(this).attr("src"));
         })
         $("#thumbnailLabel").text(thumbnail.name);
@@ -13,6 +13,24 @@ $(document).ready(() => {
         var formattedPrice = parseFloat($(this).val().replace(/,/g, '')).toLocaleString('en');
         if (formattedPrice === "NaN") $(this).val(0)
         else $(this).val(formattedPrice)
+    })
+
+    $("tbody").on("click", ".edit-btn", function () {
+        var rowPieces = $(".edit-btn").parent().siblings();
+
+        var itemID = $(rowPieces[0]).attr('data-id'),
+            thumbnail = $(rowPieces[1]).find("img"),
+            name = $(rowPieces[2]).attr('data-name'),
+            price = $(rowPieces[3]).attr('data-price'),
+            category = $(rowPieces[4]).attr('data-category'),
+            description = $(rowPieces[5]).html()
+
+        $("#editSubmit").attr("data-item-id", itemID)
+        $("#imgPreview").attr("src", thumbnail.attr("src"))
+        $("#nameInp").val(name)
+        $("#priceInp").val(parseFloat(price).toLocaleString('en'))
+        $("#categorySelect").val(category)
+        tinyMCE.activeEditor.setContent(description)
     })
 })
 
