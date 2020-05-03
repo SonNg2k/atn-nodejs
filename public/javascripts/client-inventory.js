@@ -32,6 +32,12 @@ $(document).ready(() => {
         $("#categorySelect").val(category)
         tinyMCE.activeEditor.setContent(description)
     })
+
+    $("tbody").on("click", ".delete-btn", function() {
+        var rowPieces = $(this).parent().siblings(),
+            itemID = $(rowPieces[0]).attr('data-id')
+        $("#deleteAcceptBtn").attr("data-item-id", itemID)
+    })
 })
 
 function clearInps() {
