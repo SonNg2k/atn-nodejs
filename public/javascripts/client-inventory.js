@@ -16,7 +16,7 @@ $(document).ready(() => {
     })
 
     $("tbody").on("click", ".edit-btn", function () {
-        var rowPieces = $(".edit-btn").parent().siblings();
+        var rowPieces = $(this).parent().siblings();
 
         var itemID = $(rowPieces[0]).attr('data-id'),
             thumbnail = $(rowPieces[1]).find("img"),
