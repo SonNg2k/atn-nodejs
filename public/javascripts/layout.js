@@ -16,4 +16,10 @@ $(document).ready(() => {
         $("#addSubmit").hide();
         $("#editSubmit").show();
     })
+
+    $("tbody").on("click", ".delete-btn", function () {
+        var rowPieces = $(this).parent().siblings(),
+            id = $(rowPieces[0]).attr('data-id')
+        $("#deleteAcceptBtn").attr("data-id", id)
+    })
 })

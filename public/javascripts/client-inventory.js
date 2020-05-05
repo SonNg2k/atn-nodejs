@@ -32,12 +32,6 @@ $(document).ready(() => {
         $("#categorySelect").val(category)
         tinyMCE.activeEditor.setContent(description)
     })
-
-    $("tbody").on("click", ".delete-btn", function() {
-        var rowPieces = $(this).parent().siblings(),
-            itemID = $(rowPieces[0]).attr('data-id')
-        $("#deleteAcceptBtn").attr("data-item-id", itemID)
-    })
 })
 
 function clearInps() {
@@ -48,4 +42,8 @@ function clearInps() {
     $("#priceInp").val(0)
     $('#categorySelect option:eq(0)').prop('selected', true)
     tinyMCE.activeEditor.setContent("");
+}
+
+function getFormData() {
+
 }
