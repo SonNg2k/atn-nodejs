@@ -8,7 +8,7 @@ var ToySchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        maxlength: 100
+        maxlength: 200
     },
     price: {
         type: Number,
@@ -19,7 +19,7 @@ var ToySchema = new mongoose.Schema({
     category: {
         type: String,
         required: true,
-        enum: ["action-figures", "animals", "construction-creative", "dolls", "educational", "electronic", "model-building", "spinning"]
+        enum: ["action_figures", "animals", "construction_creative", "dolls", "educational", "electronic", "model_building", "spinning"]
     },
     description: {
         type: String,
