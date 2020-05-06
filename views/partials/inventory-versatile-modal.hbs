@@ -1,0 +1,67 @@
+<div class="modal fade" id="versatileModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="addTitle" class="modal-title">Please fill in the info below to add new toy to database</h5>
+        <h5 id="editTitle" class="modal-title">Change the fields that you want to edit</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <img id="imgPreview" src="/images/200x200.png" alt="200x200 placeholder image"
+              class="img-fluid img-thumbnail centered" width="200" height="200">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Upload toy's thumbnail:</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="thumbnailInp" accept="image/*">
+              <label class="custom-file-label" for="thumbnailInp" id="thumbnailLabel">Click here to select
+                image...</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="nameInp" class="col-form-label">Toy's name:</label>
+            <input type="text" class="form-control" id="nameInp" name="toy[name]" required maxlength="200">
+          </div>
+          <div class="form-group">
+            <label for="priceInp" class="col-form-label">Price (VND): </label>
+            <input type="text" class="form-control" id="priceInp" name="toy[price]" required minlength="6"
+              maxlength="10" pattern="^\d+(,\d{3})*(\.\d+)?$" value="0"></input>
+            <small class="form-text text-muted">
+              If price is 0, the item is free 🎁
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="categorySelect" class="col-form-label">Category: </label>
+            <select class="custom-select" id="categorySelect" name="toy[category]" required>
+              <option value="" selected>Please choose a category...</option>
+              <option value="action_figures">Action figures</option>
+              <option value="animals">Animals</option>
+              <option value="construction_creative">Construction &amp Creative toys</option>
+              <option value="dolls">Dolls</option>
+              <option value="educational">Educational toys</option>
+              <option value="electronic">Electronic toys</option>
+              <option value="model_building">Model building</option>
+              <option value="spinning">Spinning toys</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="descriptionText" class="col-form-label">Description (images can be droppred in the rich-text
+              editor below): </label>
+            <small class="form-text text-muted">
+              Description can be empty!
+            </small>
+            <textarea class="form-control WYSIWYG-content" id="descriptionText"></textarea>
+          </div>
+        </form>
+      </div>
+      <button id="addSubmit" type="button" class="btn btn-warning">Add item <i class="fas fa-plus"></i></button>
+      <button id="editSubmit" type="button" class="btn btn-success">Edit item <i class="fas fa-edit"></i></button>
+    </div>
+  </div>
+</div>
