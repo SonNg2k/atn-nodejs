@@ -22,8 +22,7 @@ var ToySchema = new mongoose.Schema({
         enum: ["action_figures", "animals", "construction_creative", "dolls", "educational", "electronic", "model_building", "spinning"]
     },
     description: {
-        type: String,
-        required: true
+        type: String
     }
 })
 
