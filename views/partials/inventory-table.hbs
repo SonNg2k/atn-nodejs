@@ -1,0 +1,31 @@
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Thumbnail</th>
+            <th scope="col">Item name</th>
+            <th scope="col">Price (VND)</th>
+            <th scope="col">Category</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each toys}}
+            <tr>
+                <th scope="row" data-id="{{_id}}">{{increment @index}}</th>
+                <td><img src="{{thumbnail}}" alt="" width="50" height="50"></td>
+                <!-- Maximum 58 characters for beautiful layout-->
+                <td data-name="{{name}}"> {{shortenName name}}</td>
+                <td data-price="{{price}}">{{friendlyPrice price}}</td>
+                <td data-category="{{category}}">{{friendlyCategory category}}</td>
+                <td>
+                    <button type="button" class="edit-btn btn btn-success mb-1" data-toggle="modal"
+                        data-target="#versatileModal">Edit <i class="fas fa-plus"></i></button>
+                    <button type="button" class="delete-btn btn btn-danger" data-toggle="modal"
+                        data-target="#deleteConfirmModal">Delete <i class="fas fa-trash"></i></button>
+                </td>
+                <td class="d-none">{{{description}}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
