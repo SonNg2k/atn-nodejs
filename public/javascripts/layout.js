@@ -29,6 +29,25 @@ $(document).ready(() => {
         $("#deleteAcceptBtn").attr("data-id", id)
         $("#deleteAcceptBtn").data("rowToDelete", rowPieces.parent())
     })
+
+    $("#addSubmit, #editSubmit").click(function (e) {
+        e.preventDefault();
+        var isValid1 = $("form")[0].checkValidity(),
+            isValid2 = $("form")[0].reportValidity(),
+            currentPath = window.location.pathname,
+            property = e.currentTarget.id === "editSubmit" ? "/" + $("#editSubmit").attr("data-id") : ""
+        if (isValid1 && isValid2)
+            $.ajax({
+                url: currentPath + property,
+                data: getFullFormData(getFormData()),
+                cache: false,
+                contentType: false,
+                processData: false,
+                method: e.currentTarget.id === "addSubmit" ? "POST" : "PUT"
+            })
+                .done()
+                .fail()
+    })
 })
 
 function getFormData() {
