@@ -2,8 +2,7 @@ var mongoose = require("mongoose");
 
 var ToySchema = new mongoose.Schema({
     thumbnail: {
-        type: String,
-        required: true
+        type: String
     },
     name: {
         type: String,
