@@ -35,7 +35,7 @@ $(document).ready(() => {
         var isValid1 = $("form")[0].checkValidity(),
             isValid2 = $("form")[0].reportValidity(),
             currentPath = window.location.pathname,
-            property = e.currentTarget.id === "editSubmit" ? "/" + $("#editSubmit").attr("data-id") : ""
+            property = e.currentTarget.id === "editSubmit" ? "/" + $(this).attr("data-id") : ""
         if (isValid1 && isValid2)
             $.ajax({
                 url: currentPath + property,
