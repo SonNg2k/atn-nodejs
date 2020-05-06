@@ -3,11 +3,13 @@ var router = require("express").Router({ mergeParams: true }),
     fs = require("fs"),
     Toy = require("../models/Toy")
 
-router.get("/", (_req, res) => {
-    res.render("management", { route: "inventory" })
+router.get("/", (_req, res, next) => {
+    Toy.find({}).lean()
+    .then((foundToys) => res.render("management", { route: "inventory", toys: foundToys}))
+    .catch(next)
 })
 
-router.post("/", populate.any(), (req, res) => {
+router.post("/", populate.any(), (req, res, next) => {
     var toy = req.body.toy;
     toy.thumbnail = "/images/uploaded/" + req.files[0].filename;
     Toy.create(toy)
@@ -18,12 +20,12 @@ router.post("/", populate.any(), (req, res) => {
         })
 })
 
-router.put("/:toyID", populate.any(), (req, res) => {
+router.put("/:toyID", populate.any(), (req, res, next) => {
     console.log(req.body)
     console.log(req.params.toyID)
 })
 
-router.delete("/:toyID", (req, res) => {
+router.delete("/:toyID", (req, res, next) => {
 
 })
 
