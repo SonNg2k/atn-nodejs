@@ -15,6 +15,12 @@ $(document).ready(() => {
 
         $("#addSubmit").hide();
         $("#editSubmit").show();
+
+        var rowPieces = $(this).parent().siblings(),
+        id = $(rowPieces[0]).attr('data-id')
+        $("#editSubmit").attr("data-id", id)
+        $("#editSubmit").data("rowToEdit", rowPieces.parent())
+
     })
 
     $("tbody").on("click", ".delete-btn", function () {

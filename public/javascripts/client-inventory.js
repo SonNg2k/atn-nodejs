@@ -18,14 +18,12 @@ $(document).ready(() => {
     $("tbody").on("click", ".edit-btn", function () {
         var rowPieces = $(this).parent().siblings();
 
-        var itemID = $(rowPieces[0]).attr('data-id'),
-            thumbnail = $(rowPieces[1]).find("img"),
+        var thumbnail = $(rowPieces[1]).find("img"),
             name = $(rowPieces[2]).attr('data-name'),
             price = $(rowPieces[3]).attr('data-price'),
             category = $(rowPieces[4]).attr('data-category'),
             description = $(rowPieces[5]).html()
 
-        $("#editSubmit").attr("data-item-id", itemID)
         $("#imgPreview").attr("src", thumbnail.attr("src"))
         $("#nameInp").val(name)
         $("#priceInp").val(parseFloat(price).toLocaleString('en'))
