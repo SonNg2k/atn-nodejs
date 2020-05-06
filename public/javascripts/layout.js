@@ -27,5 +27,6 @@ $(document).ready(() => {
         var rowPieces = $(this).parent().siblings(),
             id = $(rowPieces[0]).attr('data-id')
         $("#deleteAcceptBtn").attr("data-id", id)
+        $("#deleteAcceptBtn").data("rowToDelete", rowPieces.parent())
     })
 })
