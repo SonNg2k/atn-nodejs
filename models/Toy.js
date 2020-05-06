@@ -2,7 +2,8 @@ var mongoose = require("mongoose");
 
 var ToySchema = new mongoose.Schema({
     thumbnail: {
-        type: String
+        type: String,
+        default: "/images/200x200.png"
     },
     name: {
         type: String,
