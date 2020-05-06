@@ -45,8 +45,13 @@ $(document).ready(() => {
                 processData: false,
                 method: e.currentTarget.id === "addSubmit" ? "POST" : "PUT"
             })
-                .done()
-                .fail()
+                .done((toy) => {
+                    $("#versatileModal").modal('hide')
+                    $("#successAlert").show().delay(4000).fadeOut()
+                    if (e.currentTarget.id === "addSubmit") addRow(toy)
+                    else editRow(toy)
+                })
+                .fail(() => $("#failureAlert").show().delay(4000).fadeOut())
     })
 })
 
@@ -59,7 +64,7 @@ function getFormData() {
 }
 
 function logFormData(formData) {
-    for(var pair of formData.entries()) {
-        console.log(pair[0]+ ': '+ pair[1]);
-     }
+    for (var pair of formData.entries()) {
+        console.log(pair[0] + ': ' + pair[1]);
+    }
 }
