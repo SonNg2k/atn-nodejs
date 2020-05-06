@@ -42,6 +42,9 @@ function clearInps() {
     tinyMCE.activeEditor.setContent("");
 }
 
-function getFormData() {
+function getFullFormData(formData) {
+    formData.append("item[description]", tinyMCE.activeEditor.getContent())
+    formData.append("thumbnail", $("#thumbnailInp").prop('files')[0])
 
+    return formData
 }
