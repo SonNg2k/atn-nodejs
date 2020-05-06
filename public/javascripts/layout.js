@@ -46,12 +46,28 @@ $(document).ready(() => {
                 method: e.currentTarget.id === "addSubmit" ? "POST" : "PUT"
             })
                 .done((toy) => {
+                    successAlert()
                     $("#versatileModal").modal('hide')
-                    $("#successAlert").show().delay(4000).fadeOut()
                     if (e.currentTarget.id === "addSubmit") addRow(toy)
                     else editRow(toy)
                 })
-                .fail(() => $("#failureAlert").show().delay(4000).fadeOut())
+                .fail(failureAlert)
+    })
+
+    $("#deleteAcceptBtn").click(function () {
+        var rowToDelete = $(this).data("rowToDelete"),
+            id = $(this).attr("data-id"),
+            currentPath = window.location.pathname
+        $.ajax({
+            url: currentPath + `/${id}`,
+            method: "DELETE"
+        })
+            .done(() => {
+                successAlert()
+                $("#deleteConfirmModal").modal('hide')
+                rowToDelete.remove()
+            })
+            .fail(failureAlert)
     })
 })
 
@@ -67,4 +83,12 @@ function logFormData(formData) {
     for (var pair of formData.entries()) {
         console.log(pair[0] + ': ' + pair[1]);
     }
+}
+
+function successAlert() {
+    $("#successAlert").show().delay(4000).fadeOut()
+}
+
+function failureAlert() {
+    $("#failureAlert").show().delay(4000).fadeOut()
 }
