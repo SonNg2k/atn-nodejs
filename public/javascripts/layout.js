@@ -17,7 +17,7 @@ $(document).ready(() => {
         $("#editSubmit").show();
 
         var rowPieces = $(this).parent().siblings(),
-        id = $(rowPieces[0]).attr('data-id')
+            id = $(rowPieces[0]).attr('data-id')
         $("#editSubmit").attr("data-id", id)
         $("#editSubmit").data("rowToEdit", rowPieces.parent())
 
@@ -30,3 +30,17 @@ $(document).ready(() => {
         $("#deleteAcceptBtn").data("rowToDelete", rowPieces.parent())
     })
 })
+
+function getFormData() {
+    var textData = $("#versatileModal form").serializeArray(),
+        formData = new FormData();
+    textData.forEach((ele) => formData.append(ele.name, ele.name === "item[price]" ? ele.value.replace(/,/g, '') : ele.value))
+
+    return formData;
+}
+
+function logFormData(formData) {
+    for(var pair of formData.entries()) {
+        console.log(pair[0]+ ': '+ pair[1]);
+     }
+}
