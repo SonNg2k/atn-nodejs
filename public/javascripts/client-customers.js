@@ -13,3 +13,7 @@ $("tbody").on("click", ".edit-btn", function() {
     $("#addressInp").val(address)
     $("#phoneNumbInp").val(phoneNumb)
 })
+
+function getFullFormData(formData) {
+    return formData
+}
