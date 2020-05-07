@@ -5,6 +5,11 @@
     {{> inventory-table toys=../toys}}
     {{> inventory-versatile-modal}}
 {{/ifCond}}
+{{!-- Render components for /customers route --}}
+{{#ifCond route "===" "customers"}}
+    {{> customers-table}}
+    {{> customers-versatile-modal}}
+{{/ifCond}}
 {{!-- Render #successAlert --}}
 <div id="successAlert" class="alert alert-success fixed-top-center" role="alert">
     Operation completed successfully, yay ✅
