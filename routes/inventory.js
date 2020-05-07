@@ -33,11 +33,11 @@ router.put("/:toyID", populate.any(), (req, res, next) => {
 
 router.delete("/:toyID", (req, res, next) => {
     Toy.findByIdAndDelete(req.params.toyID).lean()
-    .then((deleted) => {
-        res.status(201).json("success")
-        fs.unlink(`./public${deleted.thumbnail}`, () => {}) // delete thumbnail of deleted item
-    })
-    .catch(next)
+        .then((deleted) => {
+            res.status(201).json("success")
+            fs.unlink(`./public${deleted.thumbnail}`, () => { }) // delete thumbnail of deleted item
+        })
+        .catch(next)
 })
 
 module.exports = router
