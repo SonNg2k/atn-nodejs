@@ -1,5 +1,5 @@
 <div class="modal fade" id="versatileModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 id="addTitle" class="modal-title">Please fill in the info below to add client to database</h5>
@@ -20,14 +20,16 @@
                             maxlength="70">
                     </div>
                     <div class="form-group">
-                        <label for="ageInp" class="col-form-label">Age:</label>
-                        <input type="text" class="form-control" id="ageInp" name="customer[age]" required minlength="1"
-                            maxlength="2" pattern="\d*" title="Only digits are allowed">
+                        <label for="dobInp">Date of birth</label>
+                        <input type="date" class="form-control" id="dobInp" name="customer[dob]" required
+                            min="1950-01-01" max="2015-12-31" pattern="\d{4}-\d{2}-\d{2}">
+                        <!-- The displayed date format will differ from the actual value — the displayed date is formatted based on the locale of the
+                        user's browser, but the parsed value is always formatted yyyy-mm-dd. -->
                     </div>
                     <fieldset class="form-group">
                         <div class="row">
-                            <legend class="col-form-label col-sm-1 pt-0">Gender:</legend>
-                            <div class="col-sm-10">
+                            <legend class="col-form-label col-sm-3 pt-0">Gender:</legend>
+                            <div class="col-sm-9">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="customer[gender]"
                                         id="gridRadios1" value="male" required>
