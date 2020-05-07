@@ -1,14 +1,14 @@
 <button id="createBtn" type="button" class="btn btn-warning mb-3" data-toggle="modal"
     data-target="#versatileModal">Create <i class="fas fa-plus"></i></button>
+{{!-- Render components for /customers route --}}
+{{#ifCond route "===" "customers"}}
+    {{> customers-table clients=../clients}}
+    {{> customers-versatile-modal}}
+{{/ifCond}}
 {{!-- Render components for /inventory route --}}
 {{#ifCond route "===" "inventory"}}
     {{> inventory-table toys=../toys}}
     {{> inventory-versatile-modal}}
-{{/ifCond}}
-{{!-- Render components for /customers route --}}
-{{#ifCond route "===" "customers"}}
-    {{> customers-table}}
-    {{> customers-versatile-modal}}
 {{/ifCond}}
 {{!-- Render #successAlert --}}
 <div id="successAlert" class="alert alert-success fixed-top-center" role="alert">
