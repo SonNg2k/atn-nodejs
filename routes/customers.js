@@ -15,4 +15,11 @@ router.post("/", populate.any(), (req, res, next) => {
         .catch(next)
 })
 
+router.put("/:clientID", populate.any(), (req, res, next) => {
+    var client = req.body.customer
+    Customer.findByIdAndUpdate(req.params.clientID, client, { new: true, omitUndefined: true }).lean()
+        .then((updated) => res.status(201).json(updated))
+        .catch(next)
+})
+
 module.exports = router
