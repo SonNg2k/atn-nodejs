@@ -14,6 +14,28 @@ $("tbody").on("click", ".edit-btn", function() {
     $("#phoneNumbInp").val(phoneNumb)
 })
 
+function editRow(client) {
+    var rowToEdit = $("#editSubmit").data("rowToEdit"),
+        rowPieces = rowToEdit.children()
+    rowToEdit.addClass("edited-background")
+    rowPieces.eq(0).text("Edited")
+
+    rowPieces.eq(1).attr("data-name", client.name)
+    rowPieces.eq(1).text(client.name)
+
+    rowPieces.eq(2).attr("data-dob", HTMLinputDate(client.dob))
+    rowPieces.eq(2).text(friendlyDate(client.dob))
+
+    rowPieces.eq(3).attr("data-gender", client.gender)
+    rowPieces.eq(3).text(client.gender)
+
+    rowPieces.eq(4).attr("data-address", client.address)
+    rowPieces.eq(4).text(client.address)
+
+    rowPieces.eq(5).attr("data-phone-numb", client.phoneNumb)
+    rowPieces.eq(5).text(client.phoneNumb)
+}
+
 function addRow(client) {
     var row = `
     <tr style="background-color: #FFEFD5;">
