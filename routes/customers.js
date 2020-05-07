@@ -22,4 +22,10 @@ router.put("/:clientID", populate.any(), (req, res, next) => {
         .catch(next)
 })
 
+router.delete("/:clientID", (req, res, next) => {
+    Customer.findByIdAndDelete(req.params.clientID)
+        .then(() => res.status(201).json("success"))
+        .catch(next)
+})
+
 module.exports = router
