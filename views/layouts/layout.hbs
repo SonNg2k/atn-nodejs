@@ -61,7 +61,11 @@
   </script>
   <!-- custom js -->
   <script src="/javascripts/layout.js"></script>
-  {{!-- #descriptionText rendered at route /inventory needs rich-text editor markup --}}
+  {{!-- Load JS files on route /customers --}}
+  {{#ifCond route "===" "customers"}}
+    <script src="/javascripts/client-customers.js"></script>
+  {{/ifCond}}
+  {{!-- Load JS files on route /inventory --}}
   {{#ifCond route "===" "inventory"}}
     <script src="https://cdn.tiny.cloud/1/cphv0pqzyxu42f97hfmnnzt003z189kgm4azuxbpisajxhcl/tinymce/5/tinymce.min.js"
       referrerpolicy="origin"></script>
