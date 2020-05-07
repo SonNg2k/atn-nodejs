@@ -14,6 +14,14 @@ $("tbody").on("click", ".edit-btn", function() {
     $("#phoneNumbInp").val(phoneNumb)
 })
 
+function clearInps() {
+    $("#nameInp").val("")
+    $("#ageInp").val("")
+    $("input[type=radio]").prop('checked', false);
+    $("#addressInp").val("")
+    $("#phoneNumbInp").val("")
+}
+
 function getFullFormData(formData) {
     return formData
 }
