@@ -25,3 +25,7 @@ function clearInps() {
 function getFullFormData(formData) {
     return formData
 }
+
+function friendlyDate (ISO_date) {
+    return new Date(ISO_date).toDateString().slice(4)
+}
