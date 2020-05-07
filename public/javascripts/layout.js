@@ -45,11 +45,11 @@ $(document).ready(() => {
                 processData: false,
                 method: e.currentTarget.id === "addSubmit" ? "POST" : "PUT"
             })
-                .done((toy) => {
+                .done((response) => {
                     successAlert()
                     $("#versatileModal").modal('hide')
-                    if (e.currentTarget.id === "addSubmit") addRow(toy)
-                    else editRow(toy)
+                    if (e.currentTarget.id === "addSubmit") addRow(response)
+                    else editRow(response)
                 })
                 .fail(failureAlert)
     })
