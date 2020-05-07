@@ -1,0 +1,64 @@
+<div class="modal fade" id="versatileModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="addTitle" class="modal-title">Please fill in the info below to add client to database</h5>
+                <h5 id="editTitle" class="modal-title">Change the fields of customer data that you want to edit</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <small class="form-text text-muted">
+                    Note 🚨 No field for invoice(s) here. <br>Invoice(s) of a specific customer are generated at route
+                    /invoices
+                </small>
+                <form>
+                    <div class="form-group">
+                        <label for="nameInp" class="col-form-label">Customer's name:</label>
+                        <input type="text" class="form-control" id="nameInp" name="customer[name]" required
+                            maxlength="70">
+                    </div>
+                    <div class="form-group">
+                        <label for="ageInp" class="col-form-label">Age:</label>
+                        <input type="text" class="form-control" id="ageInp" name="customer[age]" required minlength="1"
+                            maxlength="2" pattern="\d*" title="Only digits are allowed">
+                    </div>
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <legend class="col-form-label col-sm-1 pt-0">Gender:</legend>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="customer[gender]"
+                                        id="gridRadios1" value="male" required>
+                                    <label class="form-check-label" for="gridRadios1">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="customer[gender]"
+                                        id="gridRadios2" value="female">
+                                    <label class="form-check-label" for="gridRadios2">
+                                        Female
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        <label for="addressInp" class="col-form-label">Address:</label>
+                        <input type="text" class="form-control" id="addressInp" name="customer[address]" required
+                            maxlength="60">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumbInp" class="col-form-label">Phone number:</label>
+                        <input type="text" class="form-control" id="phoneNumbInp" name="customer[phoneNumb]" required
+                            maxlength="15" pattern="\d*" title="Only digits are allowed">
+                    </div>
+                </form>
+            </div>
+            <button id="addSubmit" type="button" class="btn btn-warning">Add item <i class="fas fa-plus"></i></button>
+            <button id="editSubmit" type="button" class="btn btn-success">Edit item <i class="fas fa-edit"></i></button>
+        </div>
+    </div>
+</div>
