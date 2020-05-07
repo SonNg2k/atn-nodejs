@@ -12,20 +12,22 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row" data-id="sdjoeiqwje">1</th>
-            <td data-name="Bill Gates"> Bill Gates</td>
-            <td data-dob="1955-10-28">Oct 28 1995</td>
-            <td data-gender="female">Female</td>
-            <td data-address="NY">NY</td>
-            <td data-phone-numb="021290304">021290304</td>
-            <td data-invoice="">None</td>
-            <td>
-                <button type="button" class="edit-btn btn btn-success" data-toggle="modal"
-                    data-target="#versatileModal">Edit <i class="fas fa-edit"></i></button>
-                <button type="button" class="delete-btn btn btn-danger" data-toggle="modal"
-                    data-target="#deleteConfirmModal">Delete <i class="fas fa-trash"></i></button>
-            </td>
-        </tr>
+        {{#each clients}}
+            <tr>
+                <th scope="row" data-id="{{_id}}">{{increment @index}}</th>
+                <td data-name="{{name}}"> {{name}}</td>
+                <td data-dob="{{HTMLinputDate dob}}">{{friendlyDate dob}}</td>
+                <td data-gender="{{gender}}">{{gender}}</td>
+                <td data-address="{{address}}">{{address}}</td>
+                <td data-phone-numb="{{phoneNumb}}">{{phoneNumb}}</td>
+                <td data-invoice="">None</td>
+                <td>
+                    <button type="button" class="edit-btn btn btn-success" data-toggle="modal"
+                        data-target="#versatileModal">Edit <i class="fas fa-edit"></i></button>
+                    <button type="button" class="delete-btn btn btn-danger" data-toggle="modal"
+                        data-target="#deleteConfirmModal">Delete <i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+        {{/each}}
     </tbody>
 </table>
