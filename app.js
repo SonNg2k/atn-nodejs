@@ -28,7 +28,7 @@ require("dotenv").config({
 }) // the .env file MUST be specified
 
 //configure database
-mongoose.connect(process.env.DB_CONNECTION, {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/your-app-name', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -86,7 +86,7 @@ function errorHandler(err, req, res, _next) {
    couldn't process it because the string contains nothing or several unacceptable characters, etc.*/
 
     // render the error page
-    res.status(err.statusCode || 500).render('error', {error: err });
+    res.status(err.statusCode || 500).render('error', { error: err });
     // http-errors: mirroring statusCode for general compatibility
 }
 
