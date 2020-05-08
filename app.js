@@ -28,7 +28,7 @@ require("dotenv").config({
 }) // the .env file MUST be specified
 
 //configure database
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/your-app-name', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/ATN-DB', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
