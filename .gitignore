@@ -1,9 +1,6 @@
 # .env
 /main.env
 
-# Static images
-/public/images/uploaded
-
 # Personally I've now had to resort to adding package-lock.json to my .gitignore... it was causing me far more problems than solving them. It always conflicts when we
 # merge or rebase, and when a merge results in a package-lock.json being corrupted on the CI server, it's just a pain to have to stay fixing it
 /package-lock.json
