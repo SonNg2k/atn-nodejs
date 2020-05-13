@@ -1,6 +1,6 @@
 var mongoose = require("mongoose")
 
-var InvoiceItem = new mongoose.Schema({
+var InvoiceItemSchema = new mongoose.Schema({
     item: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Toy"
@@ -20,4 +20,4 @@ var InvoiceItem = new mongoose.Schema({
     }
 })
 
-module.exports = InvoiceItem
+module.exports = mongoose.model("InvoiceItem", InvoiceItemSchema)
