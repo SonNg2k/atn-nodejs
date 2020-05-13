@@ -17,11 +17,11 @@ var InvoiceSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Customer",
     },
-    // A collection of purchased items...
-    details: [{
+    // For the simplicity, each invoice only has one purchased item
+    purchasedItem: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "InvoiceItem"
-    }]
+    }
 })
 
 module.exports = mongoose.model("Invoice", InvoiceSchema)
