@@ -5,6 +5,9 @@
     {{> customers-table clients=../clients}}
     {{> customers-versatile-modal}}
 {{/ifCond}}
+{{#ifCond route "===" "invoices"}}
+    {{> invoices-table}}
+{{/ifCond}}
 {{!-- Render components for /inventory route --}}
 {{#ifCond route "===" "inventory"}}
     {{> inventory-table toys=../toys}}
