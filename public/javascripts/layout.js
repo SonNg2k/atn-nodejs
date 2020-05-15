@@ -79,6 +79,16 @@ function getFormData() {
     return formData;
 }
 
+function formatInpNumber() {
+    var formattedPrice = formatNumber($(this).val())
+    if (formattedPrice === "NaN") $(this).val(0)
+    else $(this).val(formattedPrice)
+}
+
+function formatNumber(stringNumb) {
+    return parseFloat(stringNumb.replace(/,/g, '')).toLocaleString('en');
+}
+
 function logFormData(formData) {
     for (var pair of formData.entries()) {
         console.log(pair[0] + ': ' + pair[1]);
