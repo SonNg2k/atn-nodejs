@@ -27,3 +27,8 @@ html {
 .edited-background {
     background-color: #98FB98 !important;
 }
+
+.inline {
+    display: inline-block !important;
+    width: auto !important;
+}
