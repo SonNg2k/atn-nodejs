@@ -12,7 +12,7 @@ var InvoiceItemSchema = new mongoose.Schema({
         default: 1,
         max: 10
     },
-    subtotal: {
+    total: {
         type: Number,
         require: true,
         min: 0,
