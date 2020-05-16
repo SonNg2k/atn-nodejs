@@ -23,6 +23,16 @@ $(() => {
     })
 })
 
+function getFullFormData(formData) {
+    return formData
+}
+
+function clearInps() {
+    $("form").find("input, select").val("");
+    $("#qtyInp").val(0)
+    $("#totalInp").val(0)
+}
+
 function resetTo0() {
     $("#qtyInp").val(0)
     $("#totalInp").val(0)
