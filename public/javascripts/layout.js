@@ -80,13 +80,15 @@ function getFormData() {
 }
 
 function formatInpNumber() {
-    var formattedPrice = formatNumber($(this).val())
+    // $(this) refers to the context of the input field whose value contains digits and commas
+    var formattedPrice = friendlyNumber($(this).val())
     if (formattedPrice === "NaN") $(this).val(0)
     else $(this).val(formattedPrice)
 }
 
-function formatNumber(stringNumb) {
-    return parseFloat(stringNumb.replace(/,/g, '')).toLocaleString('en');
+function friendlyNumber(number) {
+    if (typeof number === "number") return number.toLocaleString("en")
+    if (typeof number === "string") return parseFloat(number.replace(/,/g, '')).toLocaleString('en');
 }
 
 function logFormData(formData) {
