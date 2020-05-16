@@ -16,11 +16,13 @@ var InvoiceSchema = new mongoose.Schema({
     customer: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Customer",
+        required: true
     },
     // For the simplicity, each invoice only has one purchased item
-    purchasedItem: {
+    invoiceItem: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "InvoiceItem"
+        ref: "InvoiceItem",
+        required: true
     }
 })
 
