@@ -1,4 +1,4 @@
-$(document).ready(() => {
+$(() => {
     $("#thumbnailInp").change(function () {
         var thumbnail = $(this).prop('files')[0]
         $("#imgPreview").attr("src", URL.createObjectURL(thumbnail))
