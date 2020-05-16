@@ -1,0 +1,57 @@
+<div class="modal fade" id="versatileModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="addTitle" class="modal-title">Please fill in the info below to add new invoice </h5>
+                <h5 id="editTitle" class="modal-title">Change the fields below to edit the invoice of Bill Gates</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="dobInp">Date</label>
+                        <input type="date" class="form-control" id="dobInp" name="invoice[date]" required
+                            min="1950-01-01" max="2015-12-31" pattern="\d{4}-\d{2}-\d{2}">
+                        <!-- The displayed date format will differ from the actual value — the displayed date is formatted based on the locale of the
+                        user's browser, but the parsed value is always formatted yyyy-mm-dd. -->
+                    </div>
+                    <div class="form-group">
+                        <label for="clientSelect" class="col-form-label">Select a customer that is responsible for this
+                            invoice:</label>
+                        <select class="custom-select" id="clientSelect" name="invoice[customer]" required>
+                            <option value="" selected>Please choose a client responsible for this invoice...</option>
+                            {{#each clients}}
+                                <option value="{{_id}}">{{name}} — Day of birth: {{friendlyDate dob}}
+                                </option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemSelect" class="col-form-label">Purchased item:</label>
+                        <select class="custom-select" id="itemSelect" name="item[_id]" required>
+                            <option value="" selected>Please choose an item that the client purchased...</option>
+                            {{#each toys}}
+                                <option value="{{_id}}" data-item-price="{{price}}">Name: {{name}} — Price:
+                                    {{friendlyPrice price}}</option>
+                            {{/each}}
+                        </select>
+                        <div class="pt-2">
+                            <input type="number" class="form-control inline" name="item[qty]" id="qtyInp"
+                                placeholder="Qty" min="1" max="10" value="0" required>
+                            <input type="text" class="form-control inline ml-2" name="item[subtotal]" id="totalInp"
+                                placeholder="Total" readonly minlength="1" maxlength="11"
+                                pattern="^\d+(,\d{3})*(\.\d+)?$" value="0" required>
+                        </div>
+                        <small iclass="form-text text-muted">
+                            🚨Note: Quantity must be from 1 to 10.
+                        </small>
+                    </div>
+                </form>
+            </div>
+            <button id="addSubmit" type="button" class="btn btn-warning">Add item <i class="fas fa-plus"></i></button>
+            <button id="editSubmit" type="button" class="btn btn-success">Edit item <i class="fas fa-edit"></i></button>
+        </div>
+    </div>
+</div>
