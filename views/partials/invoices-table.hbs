@@ -10,24 +10,26 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row" data-id="3234234">1</th>
-            <td data-date="2020-05-13">May 13 2020</td>
-            <td data-client-id="1332343234">Bill Gates</td>
-            <td data-total="21233234">123,123</td>
-            <td data-invoice-item="">
-                <a href="#" data-toggle="tooltip" data-html="true" data-placement="right" title="
-                <strong>Item: </strong> Lego <br>
-                <strong>Price:</strong> 123,212 <br>
-                <strong>Qty:</strong> 1 <br>
-                <strong>Subtotal:</strong> 123,212">Hover me</a>
-            </td>
-            <td>
-                <button type="button" class="edit-btn btn btn-success" data-toggle="modal"
-                    data-target="#versatileModal">Edit <i class="fas fa-edit"></i></button>
-                <button type="button" class="delete-btn btn btn-danger" data-toggle="modal"
-                    data-target="#deleteConfirmModal">Delete <i class="fas fa-trash"></i></button>
-            </td>
-        </tr>
+        {{#each invoices}}
+            <tr>
+                <th scope="row" data-id="{{_id}}">{{increment @index}}</th>
+                <td data-date="{{HTMLinputDate date}}">{{friendlyDate date}}</td>
+                <td data-client-id="{{customer._id}}">{{customer.name}}</td>
+                <td data-total="{{total}}">{{friendlyNumber total}}</td>
+                <td data-billed-toy="{{invoiceLine.toy._id}}">
+                    <a href="#" data-toggle="tooltip" data-html="true" data-placement="right" title="
+                    <strong>Item: </strong> {{invoiceLine.toy.name}} <br>
+                    <strong>Price each:</strong> {{friendlyNumber invoiceLine.toy.price}}<br>
+                    <strong>Qty:</strong> {{invoiceLine.qty}} <br>
+                    <strong>Subtotal:</strong> {{friendlyNumber invoiceLine.subtotal}}">Hover me</a>
+                </td>
+                <td>
+                    <button type="button" class="edit-btn btn btn-success" data-toggle="modal"
+                        data-target="#versatileModal">Edit <i class="fas fa-edit"></i></button>
+                    <button type="button" class="delete-btn btn btn-danger" data-toggle="modal"
+                        data-target="#deleteConfirmModal">Delete <i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+        {{/each}}
     </tbody>
 </table>
