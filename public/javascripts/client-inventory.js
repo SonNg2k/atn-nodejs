@@ -71,7 +71,7 @@ function addRow(toy) {
             <th scope="row" data-id="${toy._id}">New</th>
             <td><img src="${toy.thumbnail}" alt="" width="50" height="50"></td>
             <td data-name="${toy.name}"> ${shortenName(toy.name)}</td>
-            <td data-price="${toy.price}">${friendlyPrice(toy.price)}</td>
+            <td data-price="${toy.price}">${friendlyNumber(toy.price)}</td>
             <td data-category="${toy.category}">${friendlyCategory(toy.category)}</td>
             <td>
                 <button type="button" class="edit-btn btn btn-success mb-1" data-toggle="modal"
@@ -83,10 +83,6 @@ function addRow(toy) {
         </tr>
     `
     $("tbody").prepend(row)
-}
-
-function friendlyPrice(price) {
-    return parseFloat(price).toLocaleString('en')
 }
 
 function friendlyCategory(category) {
