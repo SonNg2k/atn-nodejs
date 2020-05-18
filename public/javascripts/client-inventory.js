@@ -57,7 +57,7 @@ function editRow(toy) {
     rowPieces.eq(2).text(shortenName(toy.name))
 
     rowPieces.eq(3).attr("data-price", toy.price)
-    rowPieces.eq(3).text(friendlyPrice(toy.price))
+    rowPieces.eq(3).text(friendlyNumber(toy.price))
 
     rowPieces.eq(4).attr("data-category", toy.category)
     rowPieces.eq(4).text(friendlyCategory(toy.category))
@@ -75,7 +75,7 @@ function addRow(toy) {
             <td data-category="${toy.category}">${friendlyCategory(toy.category)}</td>
             <td>
                 <button type="button" class="edit-btn btn btn-success mb-1" data-toggle="modal"
-                    data-target="#versatileModal">Edit <i class="fas fa-plus"></i></button>
+                    data-target="#versatileModal">Edit <i class="fas fa-edit"></i></button>
                 <button type="button" class="delete-btn btn btn-danger" data-toggle="modal"
                     data-target="#deleteConfirmModal">Delete <i class="fas fa-trash"></i></button>
             </td>
