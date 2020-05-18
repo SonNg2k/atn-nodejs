@@ -23,6 +23,7 @@
                     <strong>Qty:</strong> {{invoiceLine.qty}} <br>
                     <strong>Subtotal:</strong> {{friendlyNumber invoiceLine.subtotal}}">Hover me</a>
                 </td>
+                <td class="d-none" data-line-item-qty="{{invoiceLine.qty}}"></td>
                 <td>
                     <button type="button" class="edit-btn btn btn-success" data-toggle="modal"
                         data-target="#versatileModal">Edit <i class="fas fa-edit"></i></button>
