@@ -30,17 +30,17 @@
                     </div>
                     <div class="form-group">
                         <label for="itemSelect" class="col-form-label">Purchased item:</label>
-                        <select class="custom-select" id="itemSelect" name="item[_toyID]" required>
+                        <select class="custom-select" id="itemSelect" name="invoiceLine[toy]" required>
                             <option value="" selected>Please choose an item that the client purchased...</option>
                             {{#each toys}}
                                 <option value="{{_id}}" data-item-price="{{price}}">Name: {{name}} — Price:
-                                    {{friendlyPrice price}}</option>
+                                    {{friendlyNumber price}}</option>
                             {{/each}}
                         </select>
                         <div class="pt-2">
-                            <input type="number" class="form-control inline" name="item[qty]" id="qtyInp"
+                            <input type="number" class="form-control inline" name="invoiceLine[qty]" id="qtyInp"
                                 placeholder="Qty" min="1" max="10" value="0" required>
-                            <input type="text" class="form-control inline ml-2" name="item[subtotal]" id="totalInp"
+                            <input type="text" class="form-control inline ml-2" name="invoiceLine[subtotal]" id="totalInp"
                                 placeholder="Total" readonly minlength="1" maxlength="11"
                                 pattern="^\d+(,\d{3})*(\.\d+)?$" value="0" required>
                         </div>
