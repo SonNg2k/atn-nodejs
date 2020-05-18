@@ -86,6 +86,14 @@ function formatInpNumber() {
     else $(this).val(formattedPrice)
 }
 
+function friendlyDate(ISO_date) {
+    return new Date(ISO_date).toDateString().slice(4)
+}
+
+function HTMLinputDate(ISO_date) {
+    return ISO_date.slice(0, 10)
+}
+
 function friendlyNumber(number) {
     if (typeof number === "number") return number.toLocaleString("en")
     if (typeof number === "string") return parseFloat(number.replace(/,/g, '')).toLocaleString('en');

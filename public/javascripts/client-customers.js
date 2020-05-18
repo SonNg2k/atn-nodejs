@@ -70,11 +70,3 @@ function clearInps() {
 function getFullFormData(formData) {
     return formData
 }
-
-function friendlyDate(ISO_date) {
-    return new Date(ISO_date).toDateString().slice(4)
-}
-
-function HTMLinputDate(ISO_date) {
-    return ISO_date.slice(0, 10)
-}
