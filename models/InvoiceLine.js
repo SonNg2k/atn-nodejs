@@ -1,7 +1,7 @@
 var mongoose = require("mongoose")
 
-var InvoiceItemSchema = new mongoose.Schema({
-    _toyID: {
+var InvoiceLineSchema = new mongoose.Schema({
+    toy: { // will be populated with extra data related to toy
         type: mongoose.Schema.Types.ObjectId,
         ref: "Toy",
         required: true
@@ -21,4 +21,4 @@ var InvoiceItemSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model("InvoiceItem", InvoiceItemSchema)
+module.exports = mongoose.model("InvoiceLine", InvoiceLineSchema)

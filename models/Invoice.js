@@ -19,9 +19,9 @@ var InvoiceSchema = new mongoose.Schema({
         required: true
     },
     // For the simplicity, each invoice only has one purchased item
-    invoiceItem: {
+    invoiceLine: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "InvoiceItem",
+        ref: "InvoiceLine",
         required: true
     }
 })

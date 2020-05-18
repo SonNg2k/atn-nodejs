@@ -25,19 +25,19 @@ $(() => {
 
 function addRow(invoice) {
     var client = invoice.customer,
-        item = invoice.invoiceItem
+        lineItem = invoice.invoiceLine
     var row = `
     <tr style="background-color: #FFEFD5;">
         <th scope="row" data-id="${invoice._id}">New</th>
         <td data-date="${HTMLinputDate(invoice.date)}">${friendlyDate(invoice.date)}</td>
         <td data-client-id="${client._id}">${client.name}</td>
         <td data-total="${invoice.total}">${friendlyNumber(invoice.total)}</td>
-        <td data-purchased-toy="${item._toyID}">
+        <td data-purchased-toy="${lineItem.toy}">
             <a href="#" data-toggle="tooltip" data-html="true" data-placement="right" title="
-            <strong>Item: </strong> ${item.name} <br>
-            <strong>Price each:</strong> ${friendlyNumber(parseInt(item.subtotal/item.qty))}<br>
-            <strong>Qty:</strong> ${item.qty} <br>
-            <strong>Subtotal:</strong> ${friendlyNumber(item.subtotal)}">Hover me</a>
+            <strong>Item: </strong> ${lineItem.name} <br>
+            <strong>Price each:</strong> ${friendlyNumber(parseInt(lineItem.subtotal/lineItem.qty))}<br>
+            <strong>Qty:</strong> ${lineItem.qty} <br>
+            <strong>Subtotal:</strong> ${friendlyNumber(lineItem.subtotal)}">Hover me</a>
         </td>
         <td>
             <button type="button" class="edit-btn btn btn-success" data-toggle="modal"
