@@ -6,20 +6,21 @@ $(() => {
     // For #versatileModal
     $("#itemSelect").change(itemSelected)
 
-    $("#qtyInp").on("input", function () {
-        var selectedItem = $("#itemSelect").find(":selected")
-        if (!selectedItem.val()) {
-            resetTo0()
-            return // <-- terminate here
-        }
-        // If an item is selected, proceed the following...
-        var qty = parseInt($(this).val())  // Cast string to integer
+    $("#qtyInp").on("input", qtyChanged)
 
-        if (qty < 1 || qty > 10) setTotalOneItem()
-        else {
-            $(this).val(qty) // Do this to remove the digit '0' at the beginning
-            setFriendlyTotal(getItemPrice() * qty)
-        }
+    $("tbody").on("click", ".edit-btn", function () {
+        var rowPieces = $(this).parent().siblings();
+
+        var date = $(rowPieces[1]).attr("data-date"),
+            clientID = $(rowPieces[2]).attr("data-client-id"),
+            lineItemID = $(rowPieces[4]).attr("data-billed-toy"),
+            lineItemQty = $(rowPieces[5]).attr("data-line-item-qty")
+
+        $("#dateInp").val(date)
+        $("#clientSelect").val(clientID)
+        $("#itemSelect").val(lineItemID)
+        $("#qtyInp").val(lineItemQty)
+        qtyChanged()
     })
 })
 
@@ -49,6 +50,22 @@ function addRow(invoice) {
     `
     $("tbody").prepend(row)
     $('[data-toggle="tooltip"]').tooltip()
+}
+
+function qtyChanged() {
+        var selectedItem = $("#itemSelect").find(":selected")
+        if (!selectedItem.val()) {
+            resetTo0()
+            return // <-- terminate here
+        }
+        // If an item is selected, proceed the following...
+        var qty = parseInt($("#qtyInp").val())  // Cast string to integer
+
+        if (qty < 1 || qty > 10) setTotalOneItem()
+        else {
+            $("#qtyInp").val(qty) // Do this to remove the digit '0' at the beginning
+            setFriendlyTotal(getItemPrice() * qty)
+        }
 }
 
 function getFullFormData(formData) {
