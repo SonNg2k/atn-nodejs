@@ -1,7 +1,7 @@
 var mongoose = require("mongoose")
 
 var InvoiceItemSchema = new mongoose.Schema({
-    item: {
+    _toyID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Toy",
         required: true
