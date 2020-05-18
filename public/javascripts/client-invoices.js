@@ -32,7 +32,7 @@ function addRow(invoice) {
         <td data-date="${HTMLinputDate(invoice.date)}">${friendlyDate(invoice.date)}</td>
         <td data-client-id="${client._id}">${client.name}</td>
         <td data-total="${invoice.total}">${friendlyNumber(invoice.total)}</td>
-        <td data-purchased-toy="${lineItem.toy}">
+        <td data-billed-toy="${lineItem.toy}">
             <a href="#" data-toggle="tooltip" data-html="true" data-placement="right" title="
             <strong>Item: </strong> ${lineItem.name} <br>
             <strong>Price each:</strong> ${friendlyNumber(parseInt(lineItem.subtotal/lineItem.qty))}<br>
