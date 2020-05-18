@@ -23,6 +23,34 @@ $(() => {
     })
 })
 
+function addRow(invoice) {
+    var client = invoice.customer,
+        item = invoice.invoiceItem
+    var row = `
+    <tr style="background-color: #FFEFD5;">
+        <th scope="row" data-id="${invoice._id}">New</th>
+        <td data-date="${HTMLinputDate(invoice.date)}">${friendlyDate(invoice.date)}</td>
+        <td data-client-id="${client._id}">${client.name}</td>
+        <td data-total="${invoice.total}">${friendlyNumber(invoice.total)}</td>
+        <td data-purchased-toy="${item._toyID}">
+            <a href="#" data-toggle="tooltip" data-html="true" data-placement="right" title="
+            <strong>Item: </strong> ${item.name} <br>
+            <strong>Price each:</strong> ${friendlyNumber(parseInt(item.subtotal/item.qty))}<br>
+            <strong>Qty:</strong> ${item.qty} <br>
+            <strong>Subtotal:</strong> ${friendlyNumber(item.subtotal)}">Hover me</a>
+        </td>
+        <td>
+            <button type="button" class="edit-btn btn btn-success" data-toggle="modal"
+                data-target="#versatileModal">Edit <i class="fas fa-edit"></i></button>
+            <button type="button" class="delete-btn btn btn-danger" data-toggle="modal"
+                data-target="#deleteConfirmModal">Delete <i class="fas fa-trash"></i></button>
+        </td>
+    </tr>
+    `
+    $("tbody").prepend(row)
+    $('[data-toggle="tooltip"]').tooltip()
+}
+
 function getFullFormData(formData) {
     return formData
 }
@@ -60,5 +88,3 @@ function itemSelected() {
     if (!selectedItem.val()) resetTo0()
     else setTotalOneItem()
 }
-
-
