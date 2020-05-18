@@ -3,7 +3,8 @@ var mongoose = require("mongoose")
 var InvoiceItemSchema = new mongoose.Schema({
     item: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Toy"
+        ref: "Toy",
+        required: true
     },
     qty: {
         type: Number,
