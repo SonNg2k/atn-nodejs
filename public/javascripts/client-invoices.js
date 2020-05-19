@@ -8,16 +8,32 @@ $(() => {
 
     $("#qtyInp").on("input", qtyChanged)
 
+    $("#createBtn").click(() => {
+        $("label[for=clientSelect]").show()
+        $("#clientSelect").show();
+        $('#clientSelect').prop('disabled', false);
+
+        $("label[for=clientNameField]").hide()
+        $("#clientNameField").hide();
+    })
+
     $("tbody").on("click", ".edit-btn", function () {
+        $("label[for=clientSelect]").hide()
+        $("#clientSelect").hide();
+        $('#clientSelect').prop('disabled', true);
+
+        $("label[for=clientNameField]").show()
+        $("#clientNameField").show();
+
         var rowPieces = $(this).parent().siblings();
 
         var date = $(rowPieces[1]).attr("data-date"),
-            clientID = $(rowPieces[2]).attr("data-client-id"),
+            clientName = $(rowPieces[2]).text()
             lineItemID = $(rowPieces[4]).attr("data-billed-toy"),
             lineItemQty = $(rowPieces[5]).attr("data-line-item-qty")
 
         $("#dateInp").val(date)
-        $("#clientSelect").val(clientID)
+        $("#clientNameField").val(clientName)
         $("#itemSelect").val(lineItemID)
         $("#qtyInp").val(lineItemQty)
         qtyChanged()
@@ -36,10 +52,11 @@ function addRow(invoice) {
         <td data-billed-toy="${lineItem.toy}">
             <a href="#" data-toggle="tooltip" data-html="true" data-placement="right" title="
             <strong>Item: </strong> ${lineItem.name} <br>
-            <strong>Price each:</strong> ${friendlyNumber(parseInt(lineItem.subtotal/lineItem.qty))}<br>
+            <strong>Price each:</strong> ${friendlyNumber(parseInt(lineItem.subtotal / lineItem.qty))}<br>
             <strong>Qty:</strong> ${lineItem.qty} <br>
-            <strong>Subtotal:</strong> ${friendlyNumber(lineItem.subtotal)}">Hover me</a>
+            <strong>Subtotal:</strong> ${friendlyNumber(lineItem.subtotal)}">Hover me for more details ←</a>
         </td>
+        <td class="d-none" data-line-item-qty="${lineItem.qty}"></td>
         <td>
             <button type="button" class="edit-btn btn btn-success" data-toggle="modal"
                 data-target="#versatileModal">Edit <i class="fas fa-edit"></i></button>
@@ -53,19 +70,19 @@ function addRow(invoice) {
 }
 
 function qtyChanged() {
-        var selectedItem = $("#itemSelect").find(":selected")
-        if (!selectedItem.val()) {
-            resetTo0()
-            return // <-- terminate here
-        }
-        // If an item is selected, proceed the following...
-        var qty = parseInt($("#qtyInp").val())  // Cast string to integer
+    var selectedItem = $("#itemSelect").find(":selected")
+    if (!selectedItem.val()) {
+        resetTo0()
+        return // <-- terminate here
+    }
+    // If an item is selected, proceed the following...
+    var qty = parseInt($("#qtyInp").val())  // Cast string to integer
 
-        if (qty < 1 || qty > 10) setTotalOneItem()
-        else {
-            $("#qtyInp").val(qty) // Do this to remove the digit '0' at the beginning
-            setFriendlyTotal(getItemPrice() * qty)
-        }
+    if (qty < 1 || qty > 10) setTotalOneItem()
+    else {
+        $("#qtyInp").val(qty) // Do this to remove the digit '0' at the beginning
+        setFriendlyTotal(getItemPrice() * qty)
+    }
 }
 
 function getFullFormData(formData) {
