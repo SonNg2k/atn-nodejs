@@ -35,7 +35,8 @@ router.delete("/:toyID", (req, res, next) => {
     Toy.findByIdAndDelete(req.params.toyID).lean()
         .then((deleted) => {
             res.status(201).json("success")
-            fs.unlink(`./public${deleted.thumbnail}`, () => { }) // delete thumbnail of deleted item
+            if (deleted.thumbnail !== "/images/200x200.png")
+                fs.unlink(`./public${deleted.thumbnail}`, () => { }) // delete thumbnail of deleted item
         })
         .catch(next)
 })
