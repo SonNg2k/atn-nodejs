@@ -47,7 +47,6 @@ function addRow(client) {
         <td data-gender="${client.gender}">${client.gender}</td>
         <td data-address="${client.address}">${client.address}</td>
         <td data-phone-numb="${client.phoneNumb}">${client.phoneNumb}</td>
-        <td data-invoice="">None</td>
         <td>
             <button type="button" class="edit-btn btn btn-success" data-toggle="modal"
                 data-target="#versatileModal">Edit <i class="fas fa-edit"></i></button>
