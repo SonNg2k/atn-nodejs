@@ -40,6 +40,30 @@ $(() => {
     })
 })
 
+function editRow(invoice) {
+    var lineItem = invoice.invoiceLine,
+        rowToEdit = $("#editSubmit").data("rowToEdit"),
+        rowPieces = rowToEdit.children()
+    rowToEdit.addClass("edited-background")
+    rowPieces.eq(0).text("Edited")
+
+    rowPieces.eq(1).attr("data-date", HTMLinputDate(invoice.date))
+    rowPieces.eq(1).text(friendlyDate(invoice.date))
+
+    rowPieces.eq(3).attr("data-total", invoice.total)
+    rowPieces.eq(3).text(friendlyNumber(invoice.total))
+
+    rowPieces.eq(4).attr("data-billed-toy", lineItem.toy._id)
+    var tooltipText = `
+        <strong>Item: </strong> ${lineItem.toy.name} <br>
+        <strong>Price each:</strong> ${friendlyNumber(lineItem.toy.price)}<br>
+        <strong>Qty:</strong> ${lineItem.qty} <br>
+        <strong>Subtotal:</strong> ${friendlyNumber(lineItem.subtotal)}
+    `
+    rowPieces.eq(4).find("a").attr("data-original-title", tooltipText)
+    rowPieces.eq(5).attr("data-line-item-qty", lineItem.qty)
+}
+
 function addRow(invoice) {
     var client = invoice.customer,
         lineItem = invoice.invoiceLine
