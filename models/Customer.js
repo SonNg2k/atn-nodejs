@@ -28,12 +28,7 @@ var CustomerSchema = new mongoose.Schema({
         type: String,
         required: true,
         maxlength: 15
-    },
-    // A list of invoices from this customer...
-    invoices: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Invoice"
-    }]
+    }
 })
 
 module.exports = mongoose.model("Customer", CustomerSchema)
