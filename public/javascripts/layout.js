@@ -74,7 +74,7 @@ $(document).ready(() => {
 function getFormData() {
     var textData = $("#versatileModal form").serializeArray(),
         formData = new FormData();
-    textData.forEach((ele) => formData.append(ele.name, ele.name === "toy[price]" || "item[subtotal]" ? ele.value.replace(/,/g, '') : ele.value))
+    textData.forEach((ele) => formData.append(ele.name, ele.name === "toy[price]" || "invoiceLine[subtotal]" ? ele.value.replace(/,/g, '') : ele.value))
 
     return formData;
 }
